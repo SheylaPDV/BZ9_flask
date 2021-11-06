@@ -5,13 +5,15 @@ app = Flask(__name__)
 
 
 
+
 @app.route('/')
 def mostrar_tabla_movimientos():
-    pass
+    return " que tal"
+
 
 @app.route('/purchase')
 def mostrar_formulario_monedas():
-    pass
+    return "hasta luego"
 
 @app.route('/status')
 def mostrar_estado_inversion():
