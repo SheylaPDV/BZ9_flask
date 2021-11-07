@@ -1,13 +1,34 @@
+
+header {
+    background-color: lightsalmon;
+    color: brown;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+
+}
+nav {
+    background-color: bisque;
+    color: black;
+    padding-left: 20px;
+    height: 25px;
+    line-height: 25px;
+}
+
+
 footer {
     margin-top: 40px;
     background-color: lightblue;
     color: black;
-    min-height: 40px;
-    line-height: 40px;
-
+    padding: 20px;
 }
 
 table.paper {
     width: 100%;
+
 }
 
+main {
+    background-color: lightsalmon;
+    color: brown
+}
