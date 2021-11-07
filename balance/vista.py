@@ -5,5 +5,6 @@ from .modelo import ListadoMovimientos
 
 @app.route('/')
 def mostrar_tabla():
-    movimientos = ListadoMovimientos()
-    return "ya estaos aqui"
+    lista_movimientos = ListadoMovimientos()
+    lista_movimientos.leer_lista()
+    return lista_movimientos.movimientos

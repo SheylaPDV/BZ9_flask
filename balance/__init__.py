@@ -1,6 +1,6 @@
 from flask import Flask
 
-FICHERO = "data/movimientos.csv"
+FICHERO = "balance/data/movimientos.csv"
 
 app = Flask(__name__)
 
