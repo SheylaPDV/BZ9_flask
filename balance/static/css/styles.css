@@ -1,0 +1,13 @@
+footer {
+    margin-top: 40px;
+    background-color: lightblue;
+    color: black;
+    min-height: 40px;
+    line-height: 40px;
+
+}
+
+table.paper {
+    width: 100%;
+}
+
