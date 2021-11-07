@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    #nombre de pestaña
+    <title>Coinapi</title>
 </head>
 <body>
-   <h1>Lista de movimientos</h1>
+    
+   
+    <h1> Lista de movimientos </h1>
+    {% for mov in items %}
+    {{ mov.fecha }}
+    {% endfor %}
+    <p></p>
 </body>
 </html>
