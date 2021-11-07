@@ -29,6 +29,16 @@ table.paper {
 }
 
 main {
+    max-width: 800px;
+    margin: auto;
+    /* margin: (un numero) se aplica en todos los margenes*/
+    /* margin: (2 numeros) el primero se aplica sup-inf y el segundo se aplica en izq-dcha */
+    /* maring: (4 numeros) seria sup, dcha, inf, izq*/
     background-color: lightsalmon;
-    color: brown
+    color: brown;
+    text-align: center;
+}
+
+.titulo-tabla {
+    border-bottom: solid 1px lightsalmon;
 }
