@@ -4,30 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    #nombre de pestaña
     <title>Coinapi</title>
+    <style>
+        .lista_movimientos {
+            border-collapse: collapse;
+            border: solid 1.5px lightgray;
+
+        }
+
+        .lista_movimientos th {
+            border: solid 1.5px lightgray
+        }
+
+        .lista_movimientos td {
+            border: solid 1.5px lightgray ;
+        }
+
+        .pie-de-pagina {
+            margin-top: 25px;
+        }
+    </style>
 </head>
 <body>
-    <h1> Lista de movimientos </h1>
-    <table>
-        <tr>
-            <th>Fecha</th>
-            <th>Concepto</th>
-            <th>I/G</th>
-            <th>Cantidad</th>
-         </tr>
+    <header>
+        Balance de gastos
 
-        {% for mov in movs %}
-        <tr>
-            <td>{{ mov.fecha }}</td>
-            <td>{{ mov.concepto }}</td>
-            <td>{{ mov.ingreso_gasto }}</td>
-            <td>{{ mov.cantidad }}</td>
-        </tr>
-    {% endfor %}
+    </header>
+    <nav>
+        Inicio | Compra | Status
+    </nav>
 
-</table>
-   
+    <main>
+        <h1> MyCRYPTO </h1>
+        <table class="lista_movimientos">
+            <tr>
+                <th>Fecha</th>
+                <th>Concepto</th>
+                <th>I/G</th>
+                <th>Cantidad</th>
+             </tr>
+    
+            {% for mov in movs %}
+            <tr>
+                <td>{{ mov.fecha }}</td>
+                <td>{{ mov.concepto }}</td>
+                <td>
+                    {% if mov.ingreso_gasto == 'I' %}
+                    Ingreso
+                    {% else %}
+                    Gasto
+                    {% endif %}
+                </td>
+                <td>{{ mov.cantidad }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</main>
+   <footer class="pie-de-pagina">&copy; 2021 - Todos los derechos reservados</footer>
     <p></p>
 </body>
 </html>
