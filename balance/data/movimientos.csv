@@ -1,4 +1,4 @@
-fecha, conepto, ingreso_gasto,cantidad
+fecha,concepto,ingreso_gasto,cantidad
 05/01/2021,comida,I,750.0
 05/01/2021,navidad,G,24.0
 05/01/2021,gasolina,G,50.0

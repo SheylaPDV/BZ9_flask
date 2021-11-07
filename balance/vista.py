@@ -8,6 +8,6 @@ def mostrar_tabla():
     lista_movimientos = ListadoMovimientos()
     lista_movimientos.leer_lista()
     #return lista_movimientos.movimientos
-    # muestra la plantilla en pantalla, en este caso de inicio-html
+    #  render_template muestra la plantilla en pantalla, en este caso de inicio-html
 
-    return render_template("inicio.html", items=lista_movimientos.movimientos)
+    return render_template("inicio.html", movs=lista_movimientos.movimientos)

@@ -3,9 +3,8 @@ import csv
 
 
 class Movimiento():
-    def __init__(self, fecha, hora, concepto, ingreso_o_gasto, cantidad):
+    def __init__(self, fecha, concepto, ingreso_gasto, cantidad):
         self.fecha = fecha
-        self.hora = hora
         self.concepto = concepto
         self.ingreso_gasto = ingreso_gasto
         self.cantidad = cantidad

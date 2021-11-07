@@ -8,12 +8,26 @@
     <title>Coinapi</title>
 </head>
 <body>
-    
-   
     <h1> Lista de movimientos </h1>
-    {% for mov in items %}
-    {{ mov.fecha }}
+    <table>
+        <tr>
+            <th>Fecha</th>
+            <th>Concepto</th>
+            <th>I/G</th>
+            <th>Cantidad</th>
+         </tr>
+
+        {% for mov in movs %}
+        <tr>
+            <td>{{ mov.fecha }}</td>
+            <td>{{ mov.concepto }}</td>
+            <td>{{ mov.ingreso_gasto }}</td>
+            <td>{{ mov.cantidad }}</td>
+        </tr>
     {% endfor %}
+
+</table>
+   
     <p></p>
 </body>
 </html>
