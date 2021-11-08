@@ -5,28 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coinapi</title>
-    <style>
-        .lista_movimientos {
-            border-collapse: collapse;
-            border: solid 1.5px lightgray;
-
-        }
-
-        .lista_movimientos th {
-            border: solid 1.5px lightgray
-        }
-
-        .lista_movimientos td {
-            border: solid 1.5px lightgray ;
-        }
-
-        .pie-de-pagina {
-            margin-top: 25px;
-        }
-    </style>
+    <link rel="stylesheet" href="static/css/flat-remix.css">
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="encabezado">
         Balance de gastos
 
     </header>
@@ -36,17 +19,19 @@
 
     <main>
         <h1> MyCRYPTO </h1>
-        <table class="lista_movimientos">
+        <table class="paper">
             <tr>
-                <th>Fecha</th>
-                <th>Concepto</th>
-                <th>I/G</th>
-                <th>Cantidad</th>
+                <th class="titulo-tabla">Fecha</th>
+                <th class="titulo-tabla">Hora</th>
+                <th class="titulo-tabla">Concepto</th>
+                <th class="titulo-tabla">I/G</th>
+                <th class="titulo-tabla">Cantidad</th>
              </tr>
     
             {% for mov in movs %}
             <tr>
                 <td>{{ mov.fecha }}</td>
+                <td>{{ mov.hora }}</td>
                 <td>{{ mov.concepto }}</td>
                 <td>
                     {% if mov.ingreso_gasto == 'I' %}
@@ -57,10 +42,13 @@
                 </td>
                 <td>{{ mov.cantidad }}</td>
             </tr>
+            <tr>
+                <td colspan="5"> {{ mov.errores }} </td>
+            </tr>
         {% endfor %}
     </table>
 </main>
-   <footer class="pie-de-pagina">&copy; 2021 - Todos los derechos reservados</footer>
+   <footer> &copy; 2021 - Todos los derechos reservados</footer>
     <p></p>
 </body>
 </html>

@@ -1,10 +1,11 @@
 
-header {
+.encabezado {
     background-color: lightsalmon;
     color: brown;
     height: 50px;
     line-height: 50px;
     padding-left: 20px;
+    font-size: xx-large;
 
 }
 nav {
@@ -31,12 +32,14 @@ table.paper {
 main {
     max-width: 800px;
     margin: auto;
+    font-weight: bold;
     /* margin: (un numero) se aplica en todos los margenes*/
     /* margin: (2 numeros) el primero se aplica sup-inf y el segundo se aplica en izq-dcha */
     /* maring: (4 numeros) seria sup, dcha, inf, izq*/
     background-color: lightsalmon;
     color: brown;
     text-align: center;
+    padding: 0 20px;
 }
 
 .titulo-tabla {

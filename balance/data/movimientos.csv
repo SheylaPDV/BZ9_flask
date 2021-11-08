@@ -1,5 +1,3 @@
-fecha,concepto,ingreso_gasto,cantidad
-05/01/2021,comida,I,750.0
-05/01/2021,navidad,G,24.0
-05/01/2021,gasolina,G,50.0
-05/01/2021,loteria de navidad,I,1000.0
+fecha,hora,concepto,ingreso_gasto,cantidad
+2021-10-25,22:15:23,BTC,G,2.50
+2021-11-13,22:30:10,BTC,G,2.50
