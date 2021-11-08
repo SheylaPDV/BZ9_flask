@@ -14,4 +14,4 @@ def mostrar_tabla():
 
 @app.route('/compra')
 def mostrar_formulario():
-    return "holi"
+    return render_template("compra.html")

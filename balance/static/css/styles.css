@@ -17,7 +17,7 @@ nav {
     
 }
 
-a:link {
+a:link, a:visited {
     color: black;
 }
 
