@@ -1,61 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coinapi</title>
-    <link rel="stylesheet" href="static/css/flat-remix.css">
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <header class="encabezado">
-        MyCRYPTO
+{% extends "base.html" %}
 
-    </header>
-    <nav>
-        <a href="/">Inicio</a> | <a href="/compra">Compra</a> | <a href="/Status">Status</a>
-    </nav>
+{% block head_title %}
+Inicio
+{% endblock head_title %}
 
-    <main>
-        <h1> Movimientos </h1>
-        <table class="paper">
+{% block contenido %}
+    <h1> Movimientos </h1>
+    <table class="paper">
+        <tr>
+            <th class="titulo-tabla">Fecha</th>
+            <th class="titulo-tabla">Hora</th>
+            <th class="titulo-tabla">From</th>
+            <th class="titulo-tabla">Q</th>
+            <th class="titulo-tabla">To</th>
+        </tr>
+
+        {% for mov in movs %}
+        <tr>
+            <td>{{ mov.Fecha }}</td>
+            <td>{{ mov.Hora }}</td>
+            <td>{{ mov.From }}</td>
+            <td>
+                {% if mov.Q == 'I' %}
+                Ingreso
+                {% else %}
+                Gasto
+                {% endif %}
+            </td>
+            <td>{{ mov.To }}</td>
+        </tr>
+        {% if mov.errores %}
             <tr>
-                <th class="titulo-tabla">Fecha</th>
-                <th class="titulo-tabla">Hora</th>
-                <th class="titulo-tabla">From</th>
-                <th class="titulo-tabla">Q</th>
-                <th class="titulo-tabla">To</th>
-             </tr>
-    
-            {% for mov in movs %}
-            <tr>
-                <td>{{ mov.Fecha }}</td>
-                <td>{{ mov.Hora }}</td>
-                <td>{{ mov.From }}</td>
-                <td>
-                    {% if mov.Q == 'I' %}
-                    Ingreso
-                    {% else %}
-                    Gasto
-                    {% endif %}
+                <td colspan="5" class="errores"> 
+                    ERRORES:
+                    {% for error in mov.errores %}
+                        {{ error }} 
+                    {% endfor %}
                 </td>
-                <td>{{ mov.To }}</td>
             </tr>
-            {% if mov.errores %}
-                <tr>
-                    <td colspan="5" class="errores"> 
-                        ERRORES:
-                        {% for error in mov.errores %}
-                            {{ error }} 
-                        {% endfor %}
-                    </td>
-                </tr>
-            {% endif %}
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
     </table>
-</main>
-   <footer> &copy; 2021 - Todos los derechos reservados</footer>
-    <p></p>
-</body>
-</html>
+{% endblock contenido %}
