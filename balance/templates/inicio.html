@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="encabezado">
-        Balance de gastos
+        MyCRYPTO
 
     </header>
     <nav>
@@ -18,29 +18,29 @@
     </nav>
 
     <main>
-        <h1> MyCRYPTO </h1>
+        <h1> Movimientos </h1>
         <table class="paper">
             <tr>
                 <th class="titulo-tabla">Fecha</th>
                 <th class="titulo-tabla">Hora</th>
-                <th class="titulo-tabla">Concepto</th>
-                <th class="titulo-tabla">I/G</th>
-                <th class="titulo-tabla">Cantidad</th>
+                <th class="titulo-tabla">From</th>
+                <th class="titulo-tabla">Q</th>
+                <th class="titulo-tabla">To</th>
              </tr>
     
             {% for mov in movs %}
             <tr>
-                <td>{{ mov.fecha }}</td>
-                <td>{{ mov.hora }}</td>
-                <td>{{ mov.concepto }}</td>
+                <td>{{ mov.Fecha }}</td>
+                <td>{{ mov.Hora }}</td>
+                <td>{{ mov.From }}</td>
                 <td>
-                    {% if mov.ingreso_gasto == 'I' %}
+                    {% if mov.Q == 'I' %}
                     Ingreso
                     {% else %}
                     Gasto
                     {% endif %}
                 </td>
-                <td>{{ mov.cantidad }}</td>
+                <td>{{ mov.To }}</td>
             </tr>
             <tr>
                 <td colspan="5"> {{ mov.errores }} </td>

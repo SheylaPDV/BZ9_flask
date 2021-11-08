@@ -9,15 +9,15 @@ class Movimiento():
         self.errores = []
         ahora = datetime.now()
         try:
-            self.fecha = date.fromisoformat(linea["fecha"])
-            if self.fecha.strftime("%Y%m%d") > ahora.strftime("%Y%m%d"):
+            self.Fecha = date.fromisoformat(linea["Fecha"])
+            if self.Fecha.strftime("%Y%m%d") > ahora.strftime("%Y%m%d"):
                 self.errores.append("La fecha no puede ser futura")
         except ValueError:
             self.errores.apend("Formato de fecha erroneo")
-        self.hora = linea["hora"]
-        self.concepto = linea["concepto"]
-        self.ingreso_gasto = linea["ingreso_gasto"]
-        self.cantidad = linea["cantidad"]
+        self.Hora = linea["Hora"]
+        self.From = linea["From"]
+        self.Q = linea["Q"]
+        self.To = linea["To"]
         pass
 
 class ListadoMovimientos():
