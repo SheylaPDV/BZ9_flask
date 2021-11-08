@@ -14,8 +14,16 @@ nav {
     padding-left: 20px;
     height: 25px;
     line-height: 25px;
+    
 }
 
+a:link {
+    color: black;
+}
+
+a:hover {
+    color: seagreen;
+}
 
 footer {
     margin-top: 40px;
@@ -26,6 +34,7 @@ footer {
 
 table.paper {
     width: 100%;
+   
 
 }
 
@@ -33,16 +42,22 @@ main {
     max-width: 800px;
     margin: auto;
     font-weight: bold;
+    text-align: center;
     /* margin: (un numero) se aplica en todos los margenes*/
     /* margin: (2 numeros) el primero se aplica sup-inf y el segundo se aplica en izq-dcha */
     /* maring: (4 numeros) seria sup, dcha, inf, izq*/
     background-color: lightsalmon;
     color: brown;
-    text-align: center;
     padding: 0 20px;
 }
 
 .titulo-tabla {
     border-bottom: solid 1px lightsalmon;
-   
+    border-collapse: collapse;   
+}
+
+.errores {
+    color: red;
+    text-align: center;
+    font-size: xx-small;
 }

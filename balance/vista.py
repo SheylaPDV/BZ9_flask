@@ -11,3 +11,7 @@ def mostrar_tabla():
     #  render_template muestra la plantilla en pantalla, en este caso de inicio-html
 
     return render_template("inicio.html", movs=lista_movimientos.movimientos)
+
+@app.route('/compra')
+def mostrar_formulario():
+    return "holi"
