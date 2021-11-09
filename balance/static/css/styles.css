@@ -1,13 +1,19 @@
 
 .encabezado {
     background-color: lightsalmon;
-    color: brown;
+    color: white;
     height: 50px;
     line-height: 50px;
     padding-left: 20px;
     font-size: xx-large;
 
 }
+
+.lista-vacia {
+    text-align: center;
+    padding: 20px;
+}
+
 nav {
     background-color: bisque;
     color: black;

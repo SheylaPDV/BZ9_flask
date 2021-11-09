@@ -29,6 +29,8 @@ Movimientos
             <th class="titulo-tabla">Q</th>
         </tr>
 <!-- BUCLE PARA RECORRER LA LISTA DE MOVIMIENTOS, LAS FILAS (CONTENIDO) -->
+        
+    {% if movs %}
         {% for mov in movs %}
         <tr>
             <td>{{ mov.Fecha }}</td>
@@ -39,7 +41,7 @@ Movimientos
             <td>{{ mov.To }}</td>
         </tr>
         <!-- BUCLE DE ERRORES, NO LO NECESITO DE MOMENTO -->
-        <!-- 
+        
         {% if mov.errores %}
             <tr>
                 <td colspan="5" class="errores"> 
@@ -49,8 +51,16 @@ Movimientos
                     {% endfor %}
                 </td>
             </tr>
-        {% endif %} -->
+        {% endif %} 
     {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="5" class="lista-vacia">
+                No hay movimientos disponibles
+            </td>
+        </tr>
+    {% endif %}
+
     
     </table>
 {% endblock contenido %}
