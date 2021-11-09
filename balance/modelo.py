@@ -1,7 +1,22 @@
+import sqlite3
 from datetime import date
 from datetime import datetime
 from . import FICHERO
 import csv
+
+# SELECT fecha, hora, from_quantity FROM MOVEMENTS
+# CREAMOS CONEXION A BASE DE DATOS
+class Data_base:
+    def __init__(self, ruta):
+        self.ruta = ruta
+
+    def consultarSQL(self, consulta):  
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        cursor.execute(consulta)
+        conexion.commit()
+        conexion.close()
+        pass
 
 
 class Movimiento():
