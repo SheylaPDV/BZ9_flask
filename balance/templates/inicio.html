@@ -4,8 +4,14 @@
 Inicio
 {% endblock head_title %}
 
+{% block page_title %}
+Movimientos
+{% endblock page_title %}
+
 {% block contenido %}
-    <h1> Movimientos </h1>
+
+    {{ super() }}
+
     <table class="paper">
         <tr>
             <th class="titulo-tabla">Fecha</th>

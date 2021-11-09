@@ -4,6 +4,42 @@
 Compra
 {% endblock head_title %}
 
+{% block page_title %}
+COMPRA DE CRIPTOS
+{% endblock page_title %}
+
 {% block contenido %}
-    <h1> COMPRA DE CRIPTOS </h1>
+    {{ super() }}
+
+    <form action="/compra">
+
+        <div class="campo-formulario">
+            <label for="fecha">Fecha</form>
+            <input type="date" name="Fecha" id="Fecha">
+        </div>
+
+        <div class="campo-formulario">
+            <label for="hora">Hora</form>
+            <input type="time" name="Hora" id="Hora">
+        </div>
+
+        <div class="campo-formulario">
+            <label for="from">From</form>
+            <input type="text" name="From" id="From">
+        </div>
+
+        <div class="campo-formulario">
+            <label for="Q">Q</form>
+            <input type="text" name="Q" id="Q">
+        </div>
+
+        <div class="campo-formulario">
+            <label for="to">To</form>
+            <input type="text" name="To" id="To">
+        </div>
+
+        <button type="submit">Agregar</button>
+        
+    </form>
+    
 {% endblock contenido %}

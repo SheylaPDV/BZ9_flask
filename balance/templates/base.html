@@ -13,6 +13,10 @@
     {% include 'componentes/header.html' %}
     <main>
         {% block contenido %}
+            <h1>
+                {% block page_title %}
+                {% endblock page_title %}
+            </h1>
         {% endblock contenido %}
     </main> 
     {% include 'componentes/footer.html' %}
