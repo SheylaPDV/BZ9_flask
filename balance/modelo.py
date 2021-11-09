@@ -11,10 +11,15 @@ class Data_base:
         self.ruta = ruta
 
     def consultarSQL(self, consulta):  
+        # CONECTO CON LA BASE DE DATOS
         conexion = sqlite3.connect(self.ruta)
+        # ABRO EL CURSOR
         cursor = conexion.cursor()
+        # EJECUTO SENTENCIA SQL
         cursor.execute(consulta)
+        # GUARDO
         conexion.commit()
+        # CIERRO CONEXION
         conexion.close()
         pass
 
