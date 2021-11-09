@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title %} Coinapi {% endblock head_title %}</title>
+    <!-- LINK PARA TRAER LOS ESTILOS -->
     <link rel="stylesheet" href="static/css/flat-remix.css">
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
+    <!-- PARA INCLUIR LA CABECERA, ETC DESDE OTRO ARCHIVO POR SEPARADO -->
     {% include 'componentes/navbar.html' %}
     {% include 'componentes/header.html' %}
     <main>
