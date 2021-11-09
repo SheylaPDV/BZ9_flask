@@ -1,3 +1,4 @@
+# INICIAMOS FLASK
 from flask import Flask
 
 FICHERO = "balance/data/movimientos.csv"

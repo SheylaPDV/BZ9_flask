@@ -3,7 +3,7 @@ from flask import render_template
 from . import app
 from .modelo import ListadoMovimientos
 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 def mostrar_tabla():
     lista_movimientos = ListadoMovimientos()
     lista_movimientos.leer_lista()
@@ -12,6 +12,6 @@ def mostrar_tabla():
 
     return render_template("inicio.html", movs=lista_movimientos.movimientos)
 
-@app.route('/compra')
+@app.route('/compra', methods=["GET","POST"])
 def mostrar_formulario():
     return render_template("compra.html")
