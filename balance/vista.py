@@ -12,11 +12,16 @@ def mostrar_tabla():
 
     return render_template("inicio.html", movs=lista_movimientos.movimientos)
 
-@app.route('/compra', methods=["GET","POST"])
+@app.route('/purchase', methods=["GET","POST"])
 def mostrar_formulario():
     # COMPROBAR METODO GET O POST
-    # if request.method == "GET":
-    return render_template("compra.html")
-    # else:
-        # datos = request.form
-        # return datos
+    if request.method == "GET":
+        return render_template('purchase.html')
+    else:
+        datos = request.form
+        print(datos)
+        return datos
+
+# @app.route('/mostrar/<int:id>/<int:tipo>', methods=['GET','POST'])
+# def actualizar_movimientos(id, tipo):
+    # return f'Mostrando ficha de movimiento {id} y {tipo}'

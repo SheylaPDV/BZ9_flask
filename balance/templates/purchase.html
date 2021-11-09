@@ -11,38 +11,38 @@ COMPRA DE CRIPTOS
 {% block contenido %}
     {{ super() }}
 
-    <form action="/compra" method="post">
+    <form action="/purchase" method="POST">
 
         <div class="campo-formulario">
-            <label for="fecha">Fecha</form>
+            <label for="fecha">Fecha</label>
             <input type="date" name="Fecha" id="Fecha">
         </div>
 
         <div class="campo-formulario">
-            <label for="hora">Hora</form>
+            <label for="hora">Hora</label>
             <input type="time" name="Hora" id="Hora">
         </div>
 
         <div class="campo-formulario">
-            <label for="from">From</form>
+            <label for="from">From</label>
             <input type="text" name="From" id="From">
         
         <div class="campo-formulario"></div>
-            <label for="Q">QF</form>
-            <input type="text" name="Q" id="Q">
+            <label for="Q">QF</label>
+            <input type="text" name="QF" id="QF">
         </div>
 
         <div class="campo-formulario">
-            <label for="to">To</form>
+            <label for="to">To</label>
             <input type="text" name="To" id="To">
         </div>
       
         <div class="campo-formulario">
-            <label for="Q">QT</form>
-            <input type="text" name="Q" id="Q">
+            <label for="Q">QT</label>
+            <input type="text" name="QT" id="QT">
         </div>
         <div class="campo-boton">
-            <button class="blue-button" type="submit">Agregar</button>
+            <button type="submit" class="blue-button" >Agregar</button>
         </div>  
     </form>
     
