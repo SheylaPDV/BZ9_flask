@@ -11,30 +11,35 @@ Movimientos
 {% block contenido %}
 
     {{ super() }}
-
+    <!-- BOTON DE AGREGAR -->
+    <form action="/compra">
+        <div class="campo-boton">
+            <button class="rounded-button" type="submit">+</button>
+        </div> 
+    </form>
+    <!-- LOS TITULOS DE LAS COLUMNAS TRAIDAS DE ARCHIVO MOVIMIENTOS.CSV -->
     <table class="paper">
+        
         <tr>
             <th class="titulo-tabla">Fecha</th>
             <th class="titulo-tabla">Hora</th>
             <th class="titulo-tabla">From</th>
             <th class="titulo-tabla">Q</th>
             <th class="titulo-tabla">To</th>
+            <th class="titulo-tabla">Q</th>
         </tr>
-
+<!-- BUCLE PARA RECORRER LA LISTA DE MOVIMIENTOS, LAS FILAS (CONTENIDO) -->
         {% for mov in movs %}
         <tr>
             <td>{{ mov.Fecha }}</td>
             <td>{{ mov.Hora }}</td>
             <td>{{ mov.From }}</td>
-            <td>
-                {% if mov.Q == 'I' %}
-                Ingreso
-                {% else %}
-                Gasto
-                {% endif %}
-            </td>
+            <td>{{ mov.QF }}</td>
+            <td>{{ mov.QT }}</td>
             <td>{{ mov.To }}</td>
         </tr>
+        <!-- BUCLE DE ERRORES, NO LO NECESITO DE MOMENTO -->
+        <!-- 
         {% if mov.errores %}
             <tr>
                 <td colspan="5" class="errores"> 
@@ -44,7 +49,8 @@ Movimientos
                     {% endfor %}
                 </td>
             </tr>
-        {% endif %}
+        {% endif %} -->
     {% endfor %}
+    
     </table>
 {% endblock contenido %}

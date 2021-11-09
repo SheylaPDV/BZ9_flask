@@ -46,7 +46,7 @@ main {
     /* margin: (un numero) se aplica en todos los margenes*/
     /* margin: (2 numeros) el primero se aplica sup-inf y el segundo se aplica en izq-dcha */
     /* maring: (4 numeros) seria sup, dcha, inf, izq*/
-    background-color: lightsalmon;
+    
     color: brown;
     padding: 0 20px;
 }
@@ -61,3 +61,14 @@ main {
     text-align: center;
     font-size: xx-small;
 }
+
+.campo-formulario label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0;
+}
+
+
+    
+
