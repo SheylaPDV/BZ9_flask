@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import date
 from datetime import datetime
-from . import FICHERO
+#from . import FICHERO
 import csv
 
 # SELECT fecha, hora, from_quantity FROM MOVEMENTS
@@ -19,9 +19,24 @@ class Data_base:
         cursor.execute(consulta)
         # GUARDO
         conexion.commit()
+
+        self.movimientos = []
+        nombre_columnas = []
+        for tupla in cursor.description:
+            nombre_columnas.append(tupla[0])
+
+        datos = cursor.fetchall()
+
+        for tupla in datos:
+            mov = {}
+            indice = 0
+            for nombre in nombre_columnas:
+                mov[nombre]=tupla[indice]
+                indice += 1
+            self.movimientos.append(mov)
         # CIERRO CONEXION
         conexion.close()
-        pass
+        return self.movimientos
 
 
 class Movimiento():
@@ -54,6 +69,7 @@ class ListadoMovimientos():
         # LISTA VACIA DONDE SE INTRODUCEN LOS MOVIMIENTOS
         self.movimientos=[]
 
+    """
     def leer_lista(self):
         # ABRIMOS FICHERO (ESTA METIDO EN LA VARIABLE FICHERO EN INIT)
         with open(FICHERO, "r") as fichero:
@@ -64,3 +80,4 @@ class ListadoMovimientos():
                 # PORCADA LINEA SE AÑADE EN FORMA DE DICCIONARIO EN LISTA VACIA MOVIMIENTOS
                 movimiento=Movimiento(linea)
                 self.movimientos.append(movimiento)
+    """

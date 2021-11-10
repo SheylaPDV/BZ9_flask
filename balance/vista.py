@@ -1,16 +1,16 @@
 # aqui poner las rutas y lo que hay que hacer en ellas
 from flask import render_template, request
 from . import app
-from .modelo import ListadoMovimientos
+from .modelo import Data_base, ListadoMovimientos
 
 @app.route('/')
 def mostrar_tabla():
-    lista_movimientos = ListadoMovimientos()
-    lista_movimientos.leer_lista()
-    #return lista_movimientos.movimientos
+    # PASAMOS RUTA
+    db = Data_base('balance/data/movements.db')
+    # CONSULTAMOS MOVIMIENTOS
+    movimientos = db.consultarSQL = 'SELECT * FROM MOVEMENTS'
     #  render_template muestra la plantilla en pantalla, en este caso de inicio-html
-
-    return render_template("inicio.html", movs=lista_movimientos.movimientos)
+    return render_template("inicio.html", movs=movimientos)
 
 @app.route('/purchase', methods=["GET","POST"])
 def mostrar_formulario():
