@@ -1,7 +1,8 @@
 # aqui poner las rutas y lo que hay que hacer en ellas
 from flask import render_template, request
 from . import app
-from . import RUTA
+from . import RUTA, APIKEY
+
 from .modelo import Data_base, ListadoMovimientos
 
 @app.route('/')
@@ -23,8 +24,13 @@ def mostrar_formulario():
         return render_template('purchase.html')
     else:
         datos = request.form
+        url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(
+        from_currency = datos['from_currency'],
+        to_currency = datos['to_currency'],
+        apikey = APIKEY)
         
         print(datos)
+        print(url)
         return datos
 
 # @app.route('/mostrar/<int:id>/<int:tipo>', methods=['GET','POST'])
