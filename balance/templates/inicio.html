@@ -33,12 +33,12 @@ Movimientos
     {% if movs %}
         {% for mov in movs %}
         <tr>
-            <td>{{ mov.Fecha }}</td>
-            <td>{{ mov.Hora }}</td>
-            <td>{{ mov.From }}</td>
-            <td>{{ mov.QF }}</td>
-            <td>{{ mov.QT }}</td>
-            <td>{{ mov.To }}</td>
+            <td>{{ mov.date }}</td>
+            <td>{{ mov.time }}</td>
+            <td>{{ mov.from_currency }}</td>
+            <td>{{ mov.from_quantity }}</td>
+            <td>{{ mov.to_currency }}</td>
+            <td>{{ mov.to_quantity }}</td>
         </tr>
         <!-- BUCLE DE ERRORES, NO LO NECESITO DE MOMENTO -->
         

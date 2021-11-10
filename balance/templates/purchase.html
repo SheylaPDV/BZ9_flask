@@ -25,7 +25,19 @@ COMPRA DE CRIPTOS
 
         <div class="campo-formulario">
             <label for="from">From</label>
-            <input type="text" name="From" id="From">
+            <select name="from_currency">
+                <option value="EUR">EUR</option> 
+                <option value="BTC">BTC</option> 
+                <option value="ETH">ETH</option>
+                <option value="USDT">USDT</option> 
+                <option value="ADA">ADA</option> 
+                <option value="SOL">SOL</option>
+                <option value="XRP">XRP</option> 
+                <option value="DOT">DOT</option> 
+                <option value="DOGE">DOGE</option> 
+                <option value="SHIB">SHIB</option> 
+             </select>
+        </div>
         
         <div class="campo-formulario"></div>
             <label for="Q">QF</label>
@@ -34,7 +46,19 @@ COMPRA DE CRIPTOS
 
         <div class="campo-formulario">
             <label for="to">To</label>
-            <input type="text" name="To" id="To">
+            <select name="to_currency">
+                <option value="EUR">EUR</option>
+                <!-- selected para que no aparezcan en los dos campos EUR EUR -->
+                <option selected="selected" value="BTC">BTC</option> 
+                <option value="ETH">ETH</option>
+                <option value="USDT">USDT</option> 
+                <option value="ADA">ADA</option> 
+                <option value="SOL">SOL</option>
+                <option value="XRP">XRP</option> 
+                <option value="DOT">DOT</option> 
+                <option value="DOGE">DOGE</option> 
+                <option value="SHIB">SHIB</option> 
+             </select>
         </div>
       
         <div class="campo-formulario">

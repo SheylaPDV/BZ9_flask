@@ -1,7 +1,7 @@
 # INICIAMOS FLASK
 from flask import Flask
 
-#FICHERO = "balance/data/movimientos.csv"
+RUTA = 'balance/data/movements.db'
 
 app = Flask(__name__)
 
