@@ -10,6 +10,21 @@ class Data_base:
     def __init__(self, ruta):
         self.ruta = ruta
 
+    """
+    def borrar(self, consulta):
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        resultado = False
+        try:
+            cursor.execute(consulta)
+            conexion.commit()
+            resultado = True
+        except:
+            conexion.rollback()
+        conexion.close()
+        return resultado
+    """
+
     def consultarSQL(self, consulta):  
         # CONECTO CON LA BASE DE DATOS
         conexion = sqlite3.connect(self.ruta)
@@ -37,6 +52,23 @@ class Data_base:
         # CIERRO CONEXION
         conexion.close()
         return self.movimientos
+
+
+    def insertarMovimiento(self, movimiento):
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        resultado = False
+        try:
+            consulta = "INSERT INTO MOVEMENTS (date,time,from_currency,from_quantity,to_currency,to_quantity) VALUES(?,?,?,?,?,?);"
+            cursor.execute(consulta, movimiento)
+            conexion.commit()
+            resultado = True
+        except Exception as ex:
+            print(ex)
+            conexion.rollback()
+        conexion.close()
+        print("Resultado:", resultado)
+        return resultado
 
 
 class Movimiento():
@@ -69,7 +101,7 @@ class ListadoMovimientos():
         # LISTA VACIA DONDE SE INTRODUCEN LOS MOVIMIENTOS
         self.movimientos=[]
 
-    """
+    
     def leer_lista(self):
         # ABRIMOS FICHERO (ESTA METIDO EN LA VARIABLE FICHERO EN INIT)
         with open(FICHERO, "r") as fichero:
@@ -80,4 +112,4 @@ class ListadoMovimientos():
                 # PORCADA LINEA SE AÑADE EN FORMA DE DICCIONARIO EN LISTA VACIA MOVIMIENTOS
                 movimiento=Movimiento(linea)
                 self.movimientos.append(movimiento)
-    """
+    

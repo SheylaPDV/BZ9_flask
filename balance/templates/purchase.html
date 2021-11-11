@@ -11,20 +11,24 @@ COMPRA DE CRIPTOS
 {% block contenido %}
     {{ super() }}
 
+    {% if resultado %}
+        <h1>Movimiento añadido</h1>
+    {% endif %}
     <form action="/purchase" method="POST">
 
         <div class="campo-formulario">
             <label for="fecha">Fecha</label>
-            <input type="date" name="Fecha" id="Fecha">
+            <input type="date" name="date" id="date" value="{{ datos.date }}">
         </div>
       
         <div class="campo-formulario">
             <label for="hora">Hora</label>
-            <input type="time" name="Hora" id="Hora">
+            <input type="time" name="time" id="time" value="{{ datos.time }}">
         </div>
 
         <div class="campo-formulario">
             <label for="from">From</label>
+          
             <select name="from_currency">
                 <option value="EUR">EUR</option> 
                 <option value="BTC">BTC</option> 
@@ -41,11 +45,12 @@ COMPRA DE CRIPTOS
         
         <div class="campo-formulario">
             <label for="Q">QF</label><a href="/"><ion-icon name="calculator"></ion-icon></a>
-            <input type="text" name="QF" id="QF">
+            <input type="number" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}">
         </div>
 
         <div class="campo-formulario">
             <label for="to">To</label>
+            
             <select name="to_currency">
                 <option value="EUR">EUR</option>
                 <!-- selected para que no aparezcan en los dos campos EUR EUR -->
@@ -63,7 +68,7 @@ COMPRA DE CRIPTOS
       
         <div class="campo-formulario">
             <label for="Q">QT</label>
-            <input type="text" name="QT" id="QT">
+            <input type="number" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}">
         </div>
         <div class="campo-boton">
             <button type="submit" class="blue-button" >Agregar</button>

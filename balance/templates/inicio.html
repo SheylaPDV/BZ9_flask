@@ -27,6 +27,7 @@ Movimientos
             <th class="titulo-tabla">Q</th>
             <th class="titulo-tabla">To</th>
             <th class="titulo-tabla">Q</th>
+            <th class="titulo-tabla">Acciones</th>
         </tr>
 <!-- BUCLE PARA RECORRER LA LISTA DE MOVIMIENTOS, LAS FILAS (CONTENIDO) -->
         
@@ -39,6 +40,11 @@ Movimientos
             <td>{{ mov.from_quantity }}</td>
             <td>{{ mov.to_currency }}</td>
             <td>{{ mov.to_quantity }}</td>
+            <td>
+                <a href="/borrar/{{ mov.id }}">
+                    <ion-icon name="trash"></ion-icon>
+                </a>
+            </td>
         </tr>
         <!-- BUCLE DE ERRORES, NO LO NECESITO DE MOMENTO -->
         
