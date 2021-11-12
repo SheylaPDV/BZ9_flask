@@ -2,12 +2,14 @@
 
 import time
 from sqlite3.dbapi2 import Date
-from flask import render_template, request
+
+from flask import render_template, request, jsonify
 from . import app
 from . import RUTA, APIKEY
+
 from .modelo import Data_base
 
-@app.route('/')
+@app.route('/api/v1')
 def mostrar_tabla():
     # CREO EL OBJETO DB CON LA RUTA DE LA BASE DE DATOS
     db = Data_base(RUTA)
@@ -30,11 +32,12 @@ def mostrar_formulario():
         "to_currency":"",
         "to_quantity":""}
         )
-    
-    if request.method == "POST":
 
+    if request.method == "POST":
+    
         datos = {}
         mensaje = ""
+       
         # OBTENGO EL DIA ACTUAL DEL SISTEMA
         datos["date"] = time.strftime("%y/%m/%d")
         # OBTENGO LA HORA ACTUAL DEL SISTEMA
@@ -51,6 +54,7 @@ def mostrar_formulario():
             db = Data_base(RUTA)
             # INSERTO EL MOVIMIENTO EN BASE DE DATOS
             resultado = db.insertarMovimiento(tupla)
+
             # COMPRUEBO EL RESULTADO DE INSERTAR EN LA BASE DE DATOS
             if resultado == True:
                 mensaje = "Movimiento creado"
