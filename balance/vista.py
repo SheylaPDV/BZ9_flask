@@ -1,15 +1,14 @@
 # aqui poner las rutas y lo que hay que hacer en ellas
 
 import time
+import requests
 from sqlite3.dbapi2 import Date
-
-from flask import render_template, request, jsonify
+from flask import render_template, request
 from . import app
 from . import RUTA, APIKEY
-
 from .modelo import Data_base
 
-@app.route('/api/v1')
+@app.route('/')
 def mostrar_tabla():
     # CREO EL OBJETO DB CON LA RUTA DE LA BASE DE DATOS
     db = Data_base(RUTA)
@@ -37,13 +36,17 @@ def mostrar_formulario():
     
         datos = {}
         mensaje = ""
-       
+        
         # OBTENGO EL DIA ACTUAL DEL SISTEMA
         datos["date"] = time.strftime("%y/%m/%d")
         # OBTENGO LA HORA ACTUAL DEL SISTEMA
         datos["time"] = time.strftime("%H:%M:%S")
         # UNO LOS DICCIONARIOS
         datos.update(request.form.to_dict())
+        url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(from_currency = datos["from_currency"],to_currency = datos["to_currency"], apikey=APIKEY)
+        print(url)
+        tipo_cambio = requests.get(url)
+        print(tipo_cambio)
         # COMPRUEBO QUE LOS DATOS INTRODUCIDOS NO SON LA MISMA MONEDA
         if datos["from_currency"] == datos["to_currency"]:
             mensaje = "Los monedas no pueden ser iguales"
