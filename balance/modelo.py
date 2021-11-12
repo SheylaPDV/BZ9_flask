@@ -1,38 +1,16 @@
 import sqlite3
 from datetime import date
 from datetime import datetime
-#from . import FICHERO
-import csv
 
-# SELECT fecha, hora, from_quantity FROM MOVEMENTS
 # CREAMOS CONEXION A BASE DE DATOS
 class Data_base:
     def __init__(self, ruta):
         self.ruta = ruta
 
-    """
-    def borrar(self, consulta):
-        conexion = sqlite3.connect(self.ruta)
-        cursor = conexion.cursor()
-        resultado = False
-        try:
-            cursor.execute(consulta)
-            conexion.commit()
-            resultado = True
-        except:
-            conexion.rollback()
-        conexion.close()
-        return resultado
-    """
-
     def consultarSQL(self, consulta):  
-        # CONECTO CON LA BASE DE DATOS
         conexion = sqlite3.connect(self.ruta)
-        # ABRO EL CURSOR
         cursor = conexion.cursor()
-        # EJECUTO SENTENCIA SQL
         cursor.execute(consulta)
-        # GUARDO
         conexion.commit()
 
         self.movimientos = []
@@ -49,7 +27,6 @@ class Data_base:
                 mov[nombre]=tupla[indice]
                 indice += 1
             self.movimientos.append(mov)
-        # CIERRO CONEXION
         conexion.close()
         return self.movimientos
 
@@ -63,14 +40,30 @@ class Data_base:
             cursor.execute(consulta, movimiento)
             conexion.commit()
             resultado = True
-        except Exception as ex:
-            print(ex)
+        except:
             conexion.rollback()
         conexion.close()
         print("Resultado:", resultado)
         return resultado
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 class Movimiento():
     def __init__(self, linea):
         # LISTA VACIA DE ERRORES EN CASO DE QUE LOS HAYA
@@ -100,16 +93,5 @@ class ListadoMovimientos():
     def __init__(self):
         # LISTA VACIA DONDE SE INTRODUCEN LOS MOVIMIENTOS
         self.movimientos=[]
-
-    
-    def leer_lista(self):
-        # ABRIMOS FICHERO (ESTA METIDO EN LA VARIABLE FICHERO EN INIT)
-        with open(FICHERO, "r") as fichero:
-            # CONVIERTE FICHERO EN UN DICCIONARIO
-            reader = csv.DictReader(fichero)
-            # BUCLE PARA LEER POR LINEA EL FICHERO
-            for linea in reader:
-                # PORCADA LINEA SE AÑADE EN FORMA DE DICCIONARIO EN LISTA VACIA MOVIMIENTOS
-                movimiento=Movimiento(linea)
-                self.movimientos.append(movimiento)
-    
+"""
+   

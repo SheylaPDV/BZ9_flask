@@ -17,9 +17,7 @@ Movimientos
             <button class="rounded-button" type="submit">+</button>
         </div> 
     </form>
-    <!-- LOS TITULOS DE LAS COLUMNAS TRAIDAS DE ARCHIVO MOVIMIENTOS.CSV -->
     <table class="paper"> 
-        
         <tr>
             <th class="titulo-tabla">Fecha</th>
             <th class="titulo-tabla">Hora</th>
@@ -27,7 +25,6 @@ Movimientos
             <th class="titulo-tabla">Q</th>
             <th class="titulo-tabla">To</th>
             <th class="titulo-tabla">Q</th>
-            <th class="titulo-tabla">Acciones</th>
         </tr>
 <!-- BUCLE PARA RECORRER LA LISTA DE MOVIMIENTOS, LAS FILAS (CONTENIDO) -->
         
@@ -40,11 +37,6 @@ Movimientos
             <td>{{ mov.from_quantity }}</td>
             <td>{{ mov.to_currency }}</td>
             <td>{{ mov.to_quantity }}</td>
-            <td>
-                <a href="/borrar/{{ mov.id }}">
-                    <ion-icon name="trash"></ion-icon>
-                </a>
-            </td>
         </tr>
         <!-- BUCLE DE ERRORES, NO LO NECESITO DE MOMENTO -->
         
@@ -61,8 +53,8 @@ Movimientos
     {% endfor %}
     {% else %}
         <tr>
-            <td colspan="5" class="lista-vacia">
-                No hay movimientos disponibles
+            <td clas colspan="5" class="lista-vacia">
+                SIN MOVIMIENTOS
             </td>
         </tr>
     {% endif %}
