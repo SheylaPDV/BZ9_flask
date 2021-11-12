@@ -30,22 +30,22 @@ def mostrar_formulario():
     
     if request.method == "POST":
         datos = {}
+        mensaje = ""
         datos["date"] = time.strftime("%y/%m/%d")
         datos["time"] = time.strftime("%H:%M:%S")
         datos.update(request.form.to_dict())
         if datos["from_currency"] == datos["to_currency"]:
-            return f"los valores no pueden ser iguales"
+            mensaje = "Los monedas no pueden ser iguales"
         else:
-        # print(datos["from_currency"])
-        # print(datos["to_currency"])
             tupla = tuple(datos.values())
-            print(tupla)
             db = Data_base(RUTA)
             resultado = db.insertarMovimiento(tupla)
-            #resultado = False
-            return render_template("purchase.html",
-            resultado=resultado,
-            datos=datos.values())
+            if resultado == True:
+                mensaje = "Movimiento creado"
+            else:
+                mensaje = "Error al crear el movimiento"
+        
+        return render_template("purchase.html", mensaje=mensaje, datos=datos)
 
 
         

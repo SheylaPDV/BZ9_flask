@@ -11,21 +11,10 @@ COMPRA DE CRIPTOS
 {% block contenido %}
     {{ super() }}
     
-    {% if resultado %}
-        <h1>Movimiento añadido</h1>
+    {% if mensaje != "" %}
+        <h1> {{ mensaje }}</h1>
     {% endif %}
     <form action="/purchase" method="POST">
-
-        <!-- 
-        <div class="campo-formulario">
-             <label for="fecha">Fecha</label>
-             <input type="date" name="date" id="date" value="{{ datos.date }}" required>
-         </div>
-      
-         <div class="campo-formulario">
-             <label for="hora">Hora</label>
-             <input type="time" name="time" id="time" value="{{ datos.time }}" required>
-         </div> -->
 
         <div class="campo-formulario">
             <label for="from">From</label>
@@ -45,7 +34,7 @@ COMPRA DE CRIPTOS
         
         <div class="campo-formulario">
             <label for="Q">QF</label><button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
-            <input type="number" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
+            <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
         </div>
 
         <div class="campo-formulario">
@@ -67,7 +56,7 @@ COMPRA DE CRIPTOS
       
         <div class="campo-formulario">
             <label for="Q">QT</label>
-            <input type="number" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" required>
+            <input type="text" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" disabled required>
         </div>
 
         <div class="campo-boton">
