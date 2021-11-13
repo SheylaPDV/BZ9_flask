@@ -43,56 +43,24 @@ def mostrar_formulario():
         # UNO LOS DICCIONARIOS
         datos.update(request.form.to_dict())
         
-        url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(from_currency = datos["from_currency"],to_currency = datos["to_currency"],apikey=APIKEY)
-        
-        tipo_cambio = requests.get(url)
-    
         if datos["to_quantity"] == "":
             
             # COMPRUEBO QUE LOS DATOS INTRODUCIDOS NO SON LA MISMA MONEDA
-            if datos["from_currency"] == datos["to_currency"]:
-                mensaje = "Las monedas no pueden ser iguales"
-
-            # SI SON DISTINTAS LAS MONEDAS, AÑADO EL MOVIMIMENTO A LA BASE DE DATOS
+            if datos["from_currency"] != datos["to_currency"]:
+                
+                url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(from_currency = datos["from_currency"],to_currency = datos["to_currency"],apikey=APIKEY)
+                tipo_cambio = requests.get(url)
+                # guardo el resultado en to_quantitty
+                datos["to_quantity"] = float(tipo_cambio.json()["rate"]) * float(datos["from_quantity"])
+        else:
+            tupla = tuple(datos.values())
+            print(tupla)
+            db = Data_base(RUTA)
+            # INSERTO EL MOVIMIENTO EN BASE DE DATOS
+            resultado = db.insertarMovimiento(tupla)
+            if resultado == True:
+                mensaje = "Movimiento creado"
             else:
-                # GUARDO EN UNA TUPLA TODOS LOS VALORES
-                datos["to_quantity"] = tipo_cambio.json()["rate"]
-                tupla = tuple(datos.values())
-                db = Data_base(RUTA)
-                # INSERTO EL MOVIMIENTO EN BASE DE DATOS
-                resultado = db.insertarMovimiento(tupla)
-
-                # COMPRUEBO EL RESULTADO DE INSERTAR EN LA BASE DE DATOS
-                if resultado == True:
-                    mensaje = "Movimiento creado"
-                else:
-                    mensaje = "Error al crear el movimiento"
-            # if datos["to_quantity"] == None:
-                # url = f"https://rest.coinapi.io/v1/exchangerate/{"from_currency"}/{to_currency}?apikey={APIKEY}";
-
-        
+                mensaje = "Error al crear el movimiento"
+                            
         return render_template("purchase.html", mensaje=mensaje, datos=datos)
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(
-        # from_currency = datos['from_currency'],
-        # to_currency = datos['to_currency'],
-        # apikey = APIKEY)
-
-        #if len(nmov.errores) > 0:
-        #    return render_template("purchase.html", errores=nmov.errores, datos=datos)
-
-  
-  

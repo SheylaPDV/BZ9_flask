@@ -18,7 +18,11 @@ COMPRA DE CRIPTOS
 
         <div class="campo-formulario">
             <label for="from">From</label>
-            <select name="from_currency">
+            {% if datos.to_quantity != "" %}
+                <select name="from_currency" disabled="disabled">
+            {% else %}
+                <select name="from_currency">
+            {% endif %}
                 <option value="EUR">EUR</option> 
                 <option value="BTC">BTC</option> 
                 <option value="ETH">ETH</option>
@@ -33,13 +37,25 @@ COMPRA DE CRIPTOS
         </div>
         
         <div class="campo-formulario">
-            <label for="Q">QF</label><button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
-            <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
+            {% if datos.to_quantity != "" %}
+                <label for="Q">QF</label><button type="submit" class="green-button" disabled ><ion-icon name="calculator"></ion-icon></button>
+            {% else %}
+                <label for="Q">QF</label><button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
+            {% endif %}
+            {% if datos.to_quantity != "" %}
+                <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" readonly required>
+            {% else %}
+                <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
+            {% endif %}
         </div>
 
         <div class="campo-formulario">
             <label for="to">To</label>
-            <select name="to_currency">
+            {% if datos.to_quantity != "" %}
+                <select name="to_currency" disabled="disabled">
+            {% else %}
+                <select name="to_currency">
+            {% endif %}
                 <option value="EUR">EUR</option>
                 <!-- selected para que no aparezcan en los dos campos EUR EUR -->
                 <option selected="selected" value="BTC">BTC</option> 
@@ -56,11 +72,15 @@ COMPRA DE CRIPTOS
       
         <div class="campo-formulario">
             <label for="Q">QT</label>
-            <input type="text" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" disabled required>
+            <input type="text" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" readonly required>
         </div>
 
         <div class="campo-formulario">
-            <button type="submit" class="blue-button" ><ion-icon name="checkmark"></ion-icon></button>
+            {% if datos.to_quantity == "" %}
+                <button type="submit" class="black-button" disabled><ion-icon name="checkmark"></ion-icon></button>
+            {% else %}
+                <button type="submit" class="blue-button"><ion-icon name="checkmark"></ion-icon></button>
+            {% endif %}
         </div>  
     </form>
     
