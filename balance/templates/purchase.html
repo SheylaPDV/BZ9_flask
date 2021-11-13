@@ -12,17 +12,13 @@ COMPRA DE CRIPTOS
     {{ super() }}
     
     {% if mensaje != "" %}
-        <h1> {{ mensaje }}</h1>
+        <h5> {{ mensaje }}</h5>
     {% endif %}
     <form action="/purchase" method="POST">
 
         <div class="campo-formulario">
             <label for="from">From</label>
-            {% if datos.to_quantity != "" %}
-                <select name="from_currency">
-            {% else %}
-                <select name="from_currency">
-            {% endif %}
+            <select name="from_currency">
                 <option value="EUR">EUR</option> 
                 <option value="BTC">BTC</option> 
                 <option value="ETH">ETH</option>
@@ -50,11 +46,7 @@ COMPRA DE CRIPTOS
 
         <div class="campo-formulario">
             <label for="to">To</label>
-            {% if datos.to_quantity != "" %}
-                <select name="to_currency" disabled="disabled">
-            {% else %}
-                <select name="to_currency">
-            {% endif %}
+            <select name="to_currency">
                 <option value="EUR">EUR</option>
                 <!-- selected para que no aparezcan en los dos campos EUR EUR -->
                 <option selected="selected" value="BTC">BTC</option> 

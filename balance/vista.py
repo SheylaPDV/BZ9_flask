@@ -52,6 +52,8 @@ def mostrar_formulario():
                 tipo_cambio = requests.get(url)
                 # guardo el resultado en to_quantitty
                 datos["to_quantity"] = float(tipo_cambio.json()["rate"]) * float(datos["from_quantity"])
+            else:
+                mensaje = f"Las monedas no pueden ser iguales"
         else:
             tupla = tuple(datos.values())
             print(tupla)

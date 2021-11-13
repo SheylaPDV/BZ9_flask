@@ -22,8 +22,8 @@ nav {
     padding-left: 20px;
     height: 25px;
     line-height: 25px;
-    
 }
+    
 
 a:link, a:visited {
     color: black;
@@ -58,6 +58,9 @@ main {
     color: brown;
     padding: 0 20px;
 }
+
+
+    
 
 .titulo-tabla {
     border-bottom: solid 1px lightsalmon;
