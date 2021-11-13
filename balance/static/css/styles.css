@@ -70,10 +70,24 @@ main {
     font-size: xx-small;
 }
 
-.campo-formulario label {
+.campo-formulario-from label {
     display: block;
     font-size: 1rem;
     font-weight: bold;
     padding-bottom: 0;
+    text-align: left;
 }
 
+.campo-formulario-from {
+    text-align: left;
+}
+
+.campo-formulario-to {
+    text-align: right;
+    height: 50px;
+    
+}
+
+.campo-formulario-to label {
+    text-align: right;
+}

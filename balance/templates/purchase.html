@@ -16,10 +16,10 @@ COMPRA DE CRIPTOS
     {% endif %}
     <form action="/purchase" method="POST">
 
-        <div class="campo-formulario">
+        <div class="campo-formulario-from">
             <label for="from">From</label>
             {% if datos.to_quantity != "" %}
-                <select name="from_currency" disabled="disabled">
+                <select name="from_currency">
             {% else %}
                 <select name="from_currency">
             {% endif %}
@@ -36,7 +36,7 @@ COMPRA DE CRIPTOS
              </select>
         </div>
         
-        <div class="campo-formulario">
+        <div class="campo-formulario-from">
             {% if datos.to_quantity != "" %}
                 <label for="Q">QF</label><button type="submit" class="green-button" disabled ><ion-icon name="calculator"></ion-icon></button>
             {% else %}
@@ -49,7 +49,7 @@ COMPRA DE CRIPTOS
             {% endif %}
         </div>
 
-        <div class="campo-formulario">
+        <div class="campo-formulario-to">
             <label for="to">To</label>
             {% if datos.to_quantity != "" %}
                 <select name="to_currency" disabled="disabled">
@@ -70,7 +70,7 @@ COMPRA DE CRIPTOS
              </select>
         </div>
       
-        <div class="campo-formulario">
+        <div class="campo-formulario-to">
             <label for="Q">QT</label>
             <input type="text" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" readonly required>
         </div>
