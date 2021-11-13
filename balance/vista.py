@@ -3,7 +3,7 @@
 import time
 import requests
 from sqlite3.dbapi2 import Date
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from . import app
 from . import RUTA, APIKEY
 from .modelo import Data_base
@@ -29,8 +29,7 @@ def mostrar_formulario():
         "from_currency":"",
         "from_quantity":"",
         "to_currency":"",
-        "to_quantity":""}
-        )
+        "to_quantity":""})
 
     if request.method == "POST":
     
@@ -43,26 +42,31 @@ def mostrar_formulario():
         datos["time"] = time.strftime("%H:%M:%S")
         # UNO LOS DICCIONARIOS
         datos.update(request.form.to_dict())
-        url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(from_currency = datos["from_currency"],to_currency = datos["to_currency"], apikey=APIKEY)
-        print(url)
+        
+        url = "https://rest.coinapi.io/v1/exchangerate/{from_currency}/{to_currency}?apikey={apikey}".format(from_currency = datos["from_currency"],to_currency = datos["to_currency"],apikey=APIKEY)
+        
         tipo_cambio = requests.get(url)
-        print(tipo_cambio)
-        # COMPRUEBO QUE LOS DATOS INTRODUCIDOS NO SON LA MISMA MONEDA
-        if datos["from_currency"] == datos["to_currency"]:
-            mensaje = "Los monedas no pueden ser iguales"
-        # SI SON DISTINTAS LAS MONEDAS, AÑADO EL MOVIMIMENTO A LA BASE DE DATOS
-        else:
-            # GUARDO EN UNA TUPLA TODOS LOS VALORES
-            tupla = tuple(datos.values())
-            db = Data_base(RUTA)
-            # INSERTO EL MOVIMIENTO EN BASE DE DATOS
-            resultado = db.insertarMovimiento(tupla)
+    
+        if datos["to_quantity"] == "":
+            
+            # COMPRUEBO QUE LOS DATOS INTRODUCIDOS NO SON LA MISMA MONEDA
+            if datos["from_currency"] == datos["to_currency"]:
+                mensaje = "Las monedas no pueden ser iguales"
 
-            # COMPRUEBO EL RESULTADO DE INSERTAR EN LA BASE DE DATOS
-            if resultado == True:
-                mensaje = "Movimiento creado"
+            # SI SON DISTINTAS LAS MONEDAS, AÑADO EL MOVIMIMENTO A LA BASE DE DATOS
             else:
-                mensaje = "Error al crear el movimiento"
+                # GUARDO EN UNA TUPLA TODOS LOS VALORES
+                datos["to_quantity"] = tipo_cambio.json()["rate"]
+                tupla = tuple(datos.values())
+                db = Data_base(RUTA)
+                # INSERTO EL MOVIMIENTO EN BASE DE DATOS
+                resultado = db.insertarMovimiento(tupla)
+
+                # COMPRUEBO EL RESULTADO DE INSERTAR EN LA BASE DE DATOS
+                if resultado == True:
+                    mensaje = "Movimiento creado"
+                else:
+                    mensaje = "Error al crear el movimiento"
             # if datos["to_quantity"] == None:
                 # url = f"https://rest.coinapi.io/v1/exchangerate/{"from_currency"}/{to_currency}?apikey={APIKEY}";
 
