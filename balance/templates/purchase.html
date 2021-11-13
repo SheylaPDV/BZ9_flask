@@ -16,7 +16,7 @@ COMPRA DE CRIPTOS
     {% endif %}
     <form action="/purchase" method="POST">
 
-        <div class="campo-formulario-from">
+        <div class="campo-formulario">
             <label for="from">From</label>
             {% if datos.to_quantity != "" %}
                 <select name="from_currency">
@@ -36,20 +36,19 @@ COMPRA DE CRIPTOS
              </select>
         </div>
         
-        <div class="campo-formulario-from">
+        <div class="campo-formulario">
             {% if datos.to_quantity != "" %}
-                <label for="Q">QF</label><button type="submit" class="green-button" disabled ><ion-icon name="calculator"></ion-icon></button>
-            {% else %}
-                <label for="Q">QF</label><button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
-            {% endif %}
-            {% if datos.to_quantity != "" %}
+                <label for="Q">QF</label>
                 <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" readonly required>
+                <button type="submit" class="green-button" disabled ><ion-icon name="calculator"></ion-icon></button>
             {% else %}
+                <label for="Q">QF</label>
                 <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
+                <button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
             {% endif %}
         </div>
 
-        <div class="campo-formulario-to">
+        <div class="campo-formulario">
             <label for="to">To</label>
             {% if datos.to_quantity != "" %}
                 <select name="to_currency" disabled="disabled">
@@ -70,7 +69,7 @@ COMPRA DE CRIPTOS
              </select>
         </div>
       
-        <div class="campo-formulario-to">
+        <div class="campo-formulario">
             <label for="Q">QT</label>
             <input type="text" name="to_quantity" id="to_quantity" value="{{ datos.to_quantity }}" readonly required>
         </div>
