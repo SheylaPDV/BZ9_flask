@@ -1,12 +1,11 @@
 
 .encabezado {
-    background-color: lightsalmon;
+    background-color: cornflowerblue;
     color: white;
     height: 50px;
     line-height: 50px;
     padding-left: 20px;
     font-size: xx-large;
-
 }
 
 
@@ -16,8 +15,9 @@
     font-size: 15px;
 }
 
+
 nav {
-    background-color: bisque;
+    background-color: lightblue;
     color: black;
     padding-left: 20px;
     height: 25px;
@@ -29,9 +29,11 @@ a:link, a:visited {
     color: black;
 }
 
+
 a:hover {
     color: seagreen;
 }
+
 
 footer {
     margin-top: 40px;
@@ -40,11 +42,11 @@ footer {
     padding: 20px;
 }
 
+
 table.paper {
     width: 100%;
-   
-
 }
+
 
 main {
     max-width: 800px;
@@ -53,13 +55,10 @@ main {
     text-align: center;
     /* margin: (un numero) se aplica en todos los margenes*/
     /* margin: (2 numeros) el primero se aplica sup-inf y el segundo se aplica en izq-dcha */
-    /* maring: (4 numeros) seria sup, dcha, inf, izq*/
-    
-    color: brown;
+    /* maring: (4 numeros) seria sup, dcha, inf, izq*/ 
+    color: darkslategrey;
     padding: 0 20px;
 }
-
-
     
 
 .titulo-tabla {
@@ -67,11 +66,13 @@ main {
     border-collapse: collapse;   
 }
 
+
 .errores {
     color: red;
     text-align: center;
     font-size: xx-small;
 }
+
 
 .campo-formulario label {
     font-size: 1rem;
@@ -79,6 +80,11 @@ main {
     padding-bottom: 0;
 }
 
+
 .campo-formulario button {
-    display: inline;
+    display: inline;   
+}
+
+.campo-boton {
+    text-align: right;
 }
