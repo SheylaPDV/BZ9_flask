@@ -15,51 +15,73 @@ COMPRA DE CRIPTOS
         <h5> {{ mensaje }}</h5>
     {% endif %}
     <form action="/purchase" method="POST">
-
+        <!-- compruebo si el campo to_quantity esta lleno y si es así, dejo solo la opcion elegida -->
+        {% if datos.to_quantity != "" %}
+            <div class="campo-formulario">
+                <label for="from">From</label>
+                <select name="from_currency">
+                    <!-- selected para que en el segundo campo por defecto aparezca-->
+                    <option selected="selected" value="{{ datos.from_currency }}">{{ datos.from_currency }}</option>      
+                </select>
+            </div>
+            <!-- si esta vacio, se pueden elegir todas -->
+        {% else %}
+            <div class="campo-formulario">
+                <label for="from">From</label>
+                <select name="from_currency">
+                    <option value="EUR">EUR</option> 
+                    <option value="BTC">BTC</option> 
+                    <option value="ETH">ETH</option>
+                    <option value="USDT">USDT</option> 
+                    <option value="ADA">ADA</option> 
+                    <option value="SOL">SOL</option>
+                    <option value="XRP">XRP</option> 
+                    <option value="DOT">DOT</option> 
+                    <option value="DOGE">DOGE</option> 
+                    <option value="SHIB">SHIB</option> 
+                </select>
+            </div>
+        {% endif %} 
         <div class="campo-formulario">
-            <label for="from">From</label>
-            <select name="from_currency">
-                <option value="EUR">EUR</option> 
-                <option value="BTC">BTC</option> 
-                <option value="ETH">ETH</option>
-                <option value="USDT">USDT</option> 
-                <option value="ADA">ADA</option> 
-                <option value="SOL">SOL</option>
-                <option value="XRP">XRP</option> 
-                <option value="DOT">DOT</option> 
-                <option value="DOGE">DOGE</option> 
-                <option value="SHIB">SHIB</option> 
-             </select>
-        </div>
-        
-        <div class="campo-formulario">
+            <!-- si to quantity esta lleno, desactivamos boton calculadora -->
             {% if datos.to_quantity != "" %}
                 <label for="Q">QF</label>
                 <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" readonly required>
                 <button type="submit" class="green-button" disabled ><ion-icon name="calculator"></ion-icon></button>
             {% else %}
+            <!--  si to quantity esta vacio, activamos el boton calculadora -->
                 <label for="Q">QF</label>
                 <input type="number" step="0.01" name="from_quantity" id="from_quantity" value="{{ datos.from_quantity }}" required>
                 <button type="submit" class="green-button" ><ion-icon name="calculator"></ion-icon></button>
             {% endif %}
+            """"
         </div>
-
-        <div class="campo-formulario">
-            <label for="to">To</label>
-            <select name="to_currency">
-                <option value="EUR">EUR</option>
-                <!-- selected para que no aparezcan en los dos campos EUR EUR -->
-                <option selected="selected" value="BTC">BTC</option> 
-                <option value="ETH">ETH</option>
-                <option value="USDT">USDT</option> 
-                <option value="ADA">ADA</option> 
-                <option value="SOL">SOL</option>
-                <option value="XRP">XRP</option> 
-                <option value="DOT">DOT</option> 
-                <option value="DOGE">DOGE</option> 
-                <option value="SHIB">SHIB</option> 
-             </select>
-        </div>
+            {% if datos.to_quantity != "" %}
+                <div class="campo-formulario">
+                    <label for="to">To</label>
+                    <select name="to_currency">
+                        <!-- selected para que en el segundo campo por defecto aparezca-->
+                        <option selected="selected" value="{{ datos.to_currency }}">{{ datos.to_currency }}</option> 
+                        
+                    </select>
+                </div>
+            {% else %}
+                <div class="campo-formulario">
+                    <label for="to">To</label>
+                    <select name="to_currency">
+                        <option value="EUR">EUR</option> 
+                        <option value="BTC">BTC</option> 
+                        <option value="ETH">ETH</option>
+                        <option value="USDT">USDT</option> 
+                        <option value="ADA">ADA</option> 
+                        <option value="SOL">SOL</option>
+                        <option value="XRP">XRP</option> 
+                        <option value="DOT">DOT</option> 
+                        <option value="DOGE">DOGE</option> 
+                        <option value="SHIB">SHIB</option> 
+                    </select>
+                </div>
+            {% endif %}
       
         <div class="campo-formulario">
             <label for="Q">QT</label>
@@ -67,8 +89,10 @@ COMPRA DE CRIPTOS
         </div>
 
         <div class="campo-formulario">
+            <!-- si el campo to quantity esta vacio inactivamos el boton check -->
             {% if datos.to_quantity == "" %}
                 <button type="submit" class="black-button" disabled><ion-icon name="checkmark"></ion-icon></button>
+            <!-- si esta lleno, lo activamos para mandar datos a bd -->
             {% else %}
                 <button type="submit" class="blue-button"><ion-icon name="checkmark"></ion-icon></button>
             {% endif %}
