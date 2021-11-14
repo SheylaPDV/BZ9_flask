@@ -1,29 +1,25 @@
-# aqui poner las rutas y lo que hay que hacer en ellas
-
 import time
 import requests
 from sqlite3.dbapi2 import Date
-from flask import render_template, request, jsonify
+from flask import render_template, request
 from . import app
 from . import RUTA, APIKEY
 from .modelo import Data_base
 
 @app.route('/')
 def mostrar_tabla():
-    # CREO EL OBJETO DB CON LA RUTA DE LA BASE DE DATOS
+    # creo el objeto db con la ruta de la base de datos
     db = Data_base(RUTA)
-    # MOVIMIENTOS ES TODOS LOS MOVMIMENTOS AL CONSULTAR LA BASE DE DATOS
+    # todos los movimientos al consultlar la base de datos
     movimientos = db.consultarSQL('SELECT * FROM MOVEMENTS')
-    #  IMPRMIMO TODOS LOS MOVMIMENOS
-    print(movimientos)
-    # RENDER TEMPLATE MUESTRA TODOS LOS MOVMIMENTOS EN LA PAGINA DE INICIO
+    # muestra todos los movimientos en la pagina de inicio
     return render_template("inicio.html", movs=movimientos)
 
     
 @app.route('/purchase', methods=["GET","POST"])
 def mostrar_formulario():
 
-    #COMPRUEBO SI EL METODO GET O POST
+    #compruebo si el metodo es get o post
     if request.method == "GET":
         return render_template('purchase.html', datos={
         "from_currency":"",
@@ -36,11 +32,11 @@ def mostrar_formulario():
         datos = {}
         mensaje = ""
         
-        # OBTENGO EL DIA ACTUAL DEL SISTEMA
+        # obtengo el dia actual del sistema
         datos["date"] = time.strftime("%y/%m/%d")
-        # OBTENGO LA HORA ACTUAL DEL SISTEMA
+        # obtengo la hora actual del sistema
         datos["time"] = time.strftime("%H:%M:%S")
-        # UNO LOS DICCIONARIOS
+        # uno los diccionarios
         datos.update(request.form.to_dict())
         #  compruebo si el campo to_quantity esta vacio
         if datos["to_quantity"] == "":

@@ -12,11 +12,7 @@ Movimientos
 
     {{ super() }}
     <!-- BOTON DE AGREGAR -->
-    <form action="/purchase">
-        <div class="campo-boton">
-            <button class="rounded-button" type="submit">+</button>
-        </div> 
-    </form>
+    
     <table class="paper"> 
         <tr>
             <th class="titulo-tabla">Fecha</th>
@@ -58,7 +54,10 @@ Movimientos
             </td>
         </tr>
     {% endif %}
-
-    
     </table>
+    <form action="/purchase">
+        <div class="campo-boton">
+            <button type="submit" class="blue-button">+</button>
+        </div> 
+    </form>
 {% endblock contenido %}
